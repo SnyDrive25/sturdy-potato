@@ -35,6 +35,12 @@ button {
     user-select: all !important;
 }
 
+input {
+    padding: 4px;
+    border: 1px solid ghostwhite;
+    outline: none;
+}
+
 button {
     padding: 9px;
     margin: 9px;
