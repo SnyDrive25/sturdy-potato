@@ -1,8 +1,7 @@
-# sturdy-potato
-TD 2 - Bitcoin - Développement Blockchain - GROS Alexandre, GOULAMHOUSSEN Sunil
+# TD 2 - Bitcoin - Développement Blockchain - GROS Alexandre, GOULAMHOUSSEN Sunil
 
 
-PARTIE EXPLICATIONS DU CODE
+# PARTIE EXPLICATIONS DU CODE
 
 
 ## 1/ Créer un entier aléatoire pouvant servir de seed à un wallet de façon sécurisée
