@@ -26,7 +26,7 @@
         <p class="title">BIP39</p>
 
         <div>
-            <a>Créer un entier aléatoire pouvant servir de seed à un wallet de façon sécurisée</a>
+            <a>Créer un entier aléatoire pouvant servir de seed à un wallet de façon sécurisée (la seed)</a>
             <button onclick="entierAlea()">Générer</button>
             <br>
             <a class="code" id="entierAlea"></a>
@@ -40,7 +40,7 @@
         </div>
 
         <div>
-            <a>Découper en lots de 11 bits</a>
+            <a>Découper en lots de 11 bits (après ajout du checksum de 4 bits)</a>
             <button onclick="decoupage()">Générer</button>
             <br>
             <a class="code" id="decoupage"></a>
@@ -64,10 +64,9 @@
             <form id="input" onSubmit="return false;">
                 <a class="txt">Seed mnemonique :</a><br>
                 <input type="text" class="code" id="mnemonique_import" value=""
-                    style="width: 700px; color: ghostwhite" /><br>
+                    style="width: 700px; color: ghostwhite" />
+                <button onclick=" find_binary_from_mnemonique()" type="button">Importer</button>
             </form>
-            <br>
-            <button onclick=" find_binary_from_mnemonique()" type="button">Importer</button>
             <br><br>
             <a><i>Mnemonique en decimal : </i></a><a class="code" id="mnemonique_decimal"></a>
             <br><br>
@@ -79,10 +78,12 @@
         <div>
             <a>Extraire la master private key et le chain code</a>
             <button onclick="show_private_key()">Générer</button>
-            <br>
-            <a class="code" id="master_private_key"></a>
-            <br>
-            <a class="code" id="chain_code"></a>
+            <br><br>
+            <a>Root seed retrouvée : </a><a class="code" id="root_seed"></a>
+            <br><br>
+            <a>Master private key : </a><a class="code" id="master_private_key"></a>
+            <br><br>
+            <a>Chain code : </a><a class="code" id="chain_code"></a>
         </div>
 
     </div>

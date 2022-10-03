@@ -180,5 +180,5 @@ async function show_private_key3() {
         "key",
         mnemonique
     );
-    document.getElementById("master_private_key").textContent = master_private_key;
+    document.getElementById("root_seed").textContent = master_private_key;
 }
