@@ -68,7 +68,7 @@ function decoupage() {
     var new_val = binaire.concat(val_hashed);
     var final = new_val.replace(/(\d)(?=(\d{11})+$)/g, '$1 ');  // insère un espace tous les 11 bits
     if (final.length != 143) {
-        // window.alert("Veuillez regénérer l'entier aléatoire ainsi que la seed binaire");
+        window.alert("Veuillez regénérer l'entier aléatoire ainsi que la seed binaire (car il y a un problème de négativité)");
         document.getElementById("decoupage").textContent = "undefined => Veuillez regénérer l'entier aléatoire ainsi que la seed binaire";
     }
     else {
@@ -163,10 +163,11 @@ async function generate_keys_from_mnemonique(secret, message) {
 function show_private_key() {
     var mnemonique = document.getElementById("mnemonique_binary").textContent;
     var seed = parseInt(mnemonique, 2).toString(16);
-    document.getElementById("master_private_key").textContent = seed;
+    document.getElementById("root_seed").textContent = seed;
 }
 
-function show_private_key2() {
+/*
+function show_private_key() {
     var mnemonique = document.getElementById("mnemonique_import").textContent;
     var hash = CryptoJS.HmacSHA256(mnemonique, "key");
     var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
@@ -174,11 +175,12 @@ function show_private_key2() {
     document.getElementById("master_private_key").textContent = hashInBase64;
 }
 
-async function show_private_key3() {
+async function show_private_key() {
     var mnemonique = document.getElementById("mnemonique_import").textContent;
     var master_private_key = await generate_keys_from_mnemonique(
         "key",
         mnemonique
     );
-    document.getElementById("root_seed").textContent = master_private_key;
+    document.getElementById("master_private_key").textContent = master_private_key;
 }
+*/
