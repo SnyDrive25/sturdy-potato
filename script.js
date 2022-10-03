@@ -124,10 +124,44 @@ function find_binary_from_mnemonique() {
             str_binary += '00000000000'.slice(listBinary[i].length) + listBinary[i] + " ";
         }
     }
+    var checksum = str_binary.slice(139, 143);
+    str_binary = str_binary.slice(0, 139);
     document.getElementById("mnemonique_decimal").textContent = listDecimal;
     document.getElementById("mnemonique_binary").textContent = str_binary;
+    document.getElementById("checksum_binary").textContent = checksum;
 }
 
-function generate_keys_from_mnemonique() {
+async function generate_keys_from_mnemonique(secret, message) {
+    const enc = new TextEncoder("utf-8");
+    const algorithm = { name: "HMAC", hash: "SHA-256" };
+    const key = await crypto.subtle.importKey(
+        "raw",
+        enc.encode(secret),
+        algorithm,
+        false, ["sign", "verify"]
+    );
 
+    const hashBuffer = await crypto.subtle.sign(
+        algorithm.name,
+        key,
+        enc.encode(message)
+    );
+
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(
+        b => b.toString(16).padStart(2, '0')
+    ).join('');
+
+    return hashHex;
+}
+
+
+async function show_private_key() {
+    var mnemonique = document.getElementById("mnemonique").textContent;
+    var master_private_key = await generate_keys_from_mnemonique(
+        "key",
+        mnemonique
+    );
+    console.log(master_private_key.length);
+    document.getElementById("master_private_key").textContent = master_private_key;
 }

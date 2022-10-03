@@ -60,14 +60,16 @@
         <br>
         <button onclick=" find_binary_from_mnemonique()" type="button">Importer</button>
         <br><br>
-        <a class="code" id="mnemonique_decimal"></a>
+        <a>Mnemonique en decimal : </a><a class="code" id="mnemonique_decimal"></a>
         <br>
-        <a class="code" id="mnemonique_binary"></a>
+        <a>Mnemonique en decimal sans le checksum : </a><a class="code" id="mnemonique_binary"></a>
+        <br>
+        <a>Checksum binaire : </a><a class="code" id="checksum_binary"></a>
     </div>
 
     <div>
         <a>Extraire la master private key et le chain code</a>
-        <button onclick="generate_keys_from_mnemonique()">Générer</button>
+        <button onclick="show_private_key()">Générer</button>
         <br>
         <a class="code" id="master_private_key"></a>
         <br>
