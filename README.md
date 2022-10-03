@@ -41,10 +41,3 @@ PARTIE INSTRUCTIONS
 A chaque étape il suffit d'appuyer sur le bouton "générer" pour valider les étaped décrites.
 Arrivé à l'étape d'importation d'une seed, il faut rentrer une seed mnémonique dans l'input avant de cliquer sur le bouton "importer".
 
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 8d36235a0153a2aeb71c33d6c04fc1473364d20e
