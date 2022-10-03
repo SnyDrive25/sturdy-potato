@@ -68,7 +68,7 @@ function decoupage() {
     var new_val = binaire.concat(val_hashed);
     var final = new_val.replace(/(\d)(?=(\d{11})+$)/g, '$1 ');  // insère un espace tous les 11 bits
     if (final.length != 143) {
-        window.alert("Veuillez regénérer l'entier aléatoire ainsi que la seed binaire");
+        // window.alert("Veuillez regénérer l'entier aléatoire ainsi que la seed binaire");
         document.getElementById("decoupage").textContent = "undefined => Veuillez regénérer l'entier aléatoire ainsi que la seed binaire";
     }
     else {
@@ -125,11 +125,11 @@ function find_binary_from_mnemonique() {
         if (mnemonique[i] != "") {
             listDecimal[i] = words.indexOf(mnemonique[i]);
             listBinary[i] = listDecimal[i].toString(2);
-            str_binary += '00000000000'.slice(listBinary[i].length) + listBinary[i] + " ";
+            str_binary += '00000000000'.slice(listBinary[i].length) + listBinary[i];
         }
     }
-    var checksum = str_binary.slice(139, 143);
-    str_binary = str_binary.slice(0, 139);
+    var checksum = str_binary.slice(128, 132);
+    str_binary = str_binary.slice(0, 128);
     document.getElementById("mnemonique_decimal").textContent = listDecimal;
     document.getElementById("mnemonique_binary").textContent = str_binary;
     document.getElementById("checksum_binary").textContent = checksum;
@@ -160,13 +160,10 @@ async function generate_keys_from_mnemonique(secret, message) {
 }
 
 
-async function show_private_key() {
-    var mnemonique = document.getElementById("mnemonique_import").textContent;
-    var master_private_key = await generate_keys_from_mnemonique(
-        mnemonique,
-        mnemonique
-    );
-    document.getElementById("master_private_key").textContent = master_private_key;
+function show_private_key() {
+    var mnemonique = document.getElementById("mnemonique_binary").textContent;
+    var seed = parseInt(mnemonique, 2).toString(16);
+    document.getElementById("master_private_key").textContent = seed;
 }
 
 function show_private_key2() {
@@ -175,4 +172,13 @@ function show_private_key2() {
     var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
     console.log(hashInBase64.length);
     document.getElementById("master_private_key").textContent = hashInBase64;
+}
+
+async function show_private_key3() {
+    var mnemonique = document.getElementById("mnemonique_import").textContent;
+    var master_private_key = await generate_keys_from_mnemonique(
+        "key",
+        mnemonique
+    );
+    document.getElementById("master_private_key").textContent = master_private_key;
 }

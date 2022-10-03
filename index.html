@@ -22,59 +22,69 @@
 
     <h1>Bitcoin Wallet</h1>
 
-    <div>
-        <a>Créer un entier aléatoire pouvant servir de seed à un wallet de façon sécurisée</a>
-        <button onclick="entierAlea()">Générer</button>
-        <br>
-        <a class="code" id="entierAlea"></a>
+    <div class="ctn">
+        <p class="title">BIP39</p>
+
+        <div>
+            <a>Créer un entier aléatoire pouvant servir de seed à un wallet de façon sécurisée</a>
+            <button onclick="entierAlea()">Générer</button>
+            <br>
+            <a class="code" id="entierAlea"></a>
+        </div>
+
+        <div>
+            <a>Représenter cette seed en binaire</a>
+            <button onclick="toBinary()">Générer</button>
+            <br>
+            <a class="code" id="toBinary"></a>
+        </div>
+
+        <div>
+            <a>Découper en lots de 11 bits</a>
+            <button onclick="decoupage()">Générer</button>
+            <br>
+            <a class="code" id="decoupage"></a>
+        </div>
+
+        <div>
+            <a>Attribuer à chaque lot un mot selon la liste BIP 39 et afficher la seed en mnémonique</a>
+            <button onclick="mnemonique()">Générer</button>
+            <br>
+            <a class="code" id="mnemonique"></a>
+        </div>
+
     </div>
 
-    <div>
-        <a>Représenter cette seed en binaire</a>
-        <button onclick="toBinary()">Générer</button>
-        <br>
-        <a class="code" id="toBinary"></a>
-    </div>
+    <div class="ctn">
+        <p class="title">BIP32</p>
 
-    <div>
-        <a>Découper en lots de 11 bits</a>
-        <button onclick="decoupage()">Générer</button>
-        <br>
-        <a class="code" id="decoupage"></a>
-    </div>
+        <div>
+            <a>Permettre l’import d’une seed mnémonique</a>
+            <br><br>
+            <form id="input" onSubmit="return false;">
+                <a class="txt">Seed mnemonique :</a><br>
+                <input type="text" class="code" id="mnemonique_import" value=""
+                    style="width: 700px; color: ghostwhite" /><br>
+            </form>
+            <br>
+            <button onclick=" find_binary_from_mnemonique()" type="button">Importer</button>
+            <br><br>
+            <a><i>Mnemonique en decimal : </i></a><a class="code" id="mnemonique_decimal"></a>
+            <br><br>
+            <a><i>Mnemonique en decimal sans le checksum : </i></a><a class="code" id="mnemonique_binary"></a>
+            <br><br>
+            <a><i>Checksum binaire : </i></a><a class="code" id="checksum_binary"></a>
+        </div>
 
-    <div>
-        <a>Attribuer à chaque lot un mot selon la liste BIP 39 et afficher la seed en mnémonique</a>
-        <button onclick="mnemonique()">Générer</button>
-        <br>
-        <a class="code" id="mnemonique"></a>
-    </div>
+        <div>
+            <a>Extraire la master private key et le chain code</a>
+            <button onclick="show_private_key()">Générer</button>
+            <br>
+            <a class="code" id="master_private_key"></a>
+            <br>
+            <a class="code" id="chain_code"></a>
+        </div>
 
-    <div>
-        <a>Permettre l’import d’une seed mnémonique</a>
-        <br><br>
-        <form id="input" onSubmit="return false;">
-            <a class="txt">Seed mnemonique :</a><br>
-            <input type="text" class="code" id="mnemonique_import" value=""
-                style="width: 700px; color: ghostwhite" /><br>
-        </form>
-        <br>
-        <button onclick=" find_binary_from_mnemonique()" type="button">Importer</button>
-        <br><br>
-        <a><i>Mnemonique en decimal : </i></a><a class="code" id="mnemonique_decimal"></a>
-        <br><br>
-        <a><i>Mnemonique en decimal sans le checksum : </i></a><a class="code" id="mnemonique_binary"></a>
-        <br><br>
-        <a><i>Checksum binaire : </i></a><a class="code" id="checksum_binary"></a>
-    </div>
-
-    <div>
-        <a>Extraire la master private key et le chain code</a>
-        <button onclick="show_private_key()">Générer</button>
-        <br>
-        <a class="code" id="master_private_key"></a>
-        <br>
-        <a class="code" id="chain_code"></a>
     </div>
 
 </body>

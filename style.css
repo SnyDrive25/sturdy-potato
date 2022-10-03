@@ -95,3 +95,22 @@ div {
     box-shadow: 4px 4px 9px black;
     border-radius: 17px;
 }
+
+.ctn {
+    width: 100%;
+    margin-top: 100px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    border-top: 4px solid ghostwhite;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.title {
+    position: absolute;
+    margin-top: -40px;
+    left: 9px;
+    color: ghostwhite;
+    font-size: 28px;
+}
